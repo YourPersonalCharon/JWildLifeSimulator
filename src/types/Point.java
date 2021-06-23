@@ -1,10 +1,10 @@
 package types;
 
-public class Position {
+public class Point {
 	public int x;
 	public int y;
 	
-	public Position(int x, int y) {
+	public Point(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
