@@ -15,28 +15,28 @@ public class Predator implements Animal {
 		int vertical = H.rand.nextInt(3)-1;		
 		int horizontal = H.rand.nextInt(3)-1;		
 		
-		if(position.x==0 && vertical==-1) {
+		if(position.x==0 && horizontal==-1) {
 			position.x=C.WIDTH-1;
-		}else if(position.x == C.WIDTH-1 && vertical == 1) {
+		}else if(position.x == C.WIDTH-1 && horizontal == 1) {
 			position.x=0;
 		}else {
-			position.x+=vertical;
+			position.x+=horizontal;
 		}
-		if(position.y==0 && horizontal==-1) {
+		if(position.y==0 && vertical==-1) {
 			position.y=C.HEIGHT-1;
-		}else if(position.y == C.HEIGHT-1 && horizontal == 1) {
+		}else if(position.y == C.HEIGHT-1 && vertical == 1) {
 			position.y=0;
 		}else {
-			position.y+=horizontal;
+			position.y+=vertical;
 		}
 		
 		age++;
 	}
 	
-	public void eat(World world, Population animals) {
+	public void eat(World world) {
 		if(world.map[position.y][position.x].prays.size()>0) {
 			Pray pray = world.map[position.y][position.x].prays.remove(0);
-			animals.prays.remove(pray);
+			world.animals.prays.remove(pray);
 			return;
 		}
 		starve();

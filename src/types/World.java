@@ -3,21 +3,28 @@ package types;
 
 import program.C;
 
-public class World {
+
+
+public class World{
+	
 	public int height;
 	public int width;
 	
 	public Tile[][] map;
+	
+	public Population animals;
+	
 	
 	public String getTile(int x, int y) {
 		return map[y][x].getTile();
 	}
 	
 	
-	public World(int width, int height){
+	public World(int width, int height, Population animals){
 		this.height=height;
 		this.width=width;
 		map = new Tile[height][width];
+		this.animals = animals;
 	}
 
 
@@ -29,7 +36,7 @@ public class World {
 		}
 	}
 	
-	public String draw(Population animals) {
+	public void update() {
 		
 		this.clear();
 		
@@ -41,6 +48,12 @@ public class World {
 			map[pray.position.y][pray.position.x]
 					.prays.add(pray);
 		}
+		
+	}
+	
+	public String draw() {
+		
+		update();
 		
 		String text="";
 		
