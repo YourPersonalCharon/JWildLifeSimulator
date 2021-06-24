@@ -5,18 +5,12 @@ import javax.swing.*;
 
 import program.C;
 
-public class MyPanel extends JPanel{
+public class WorldPanel extends JPanel{
 
-	
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -2230878892178463365L;
 	
 	public World world;
 
-	public MyPanel(World map){
+	public WorldPanel(World map){
 		this.world = map;
 		this.setPreferredSize(new Dimension(C.CANVAS_WIDTH, C.CANVAS_HEIGHT));
 		this.setBackground(Color.white);

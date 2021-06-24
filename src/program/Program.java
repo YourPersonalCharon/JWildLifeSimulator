@@ -1,6 +1,8 @@
 package program;
 
 
+import javax.swing.JOptionPane;
+
 import types.*;
 
 
@@ -14,7 +16,7 @@ public class Program{
 		
 		System.out.println(world.draw());
 		
-		MyPanel panel = new MyPanel(world);
+		WorldPanel panel = new WorldPanel(world);
 		MyFrame frame = new MyFrame(panel);
 		
 		
@@ -28,11 +30,15 @@ public class Program{
 			}
 			
 			H.lifeCycle(world);
-			frame.panel.repaint();
+			frame.worldPanel.repaint();
 			if(animals.predators.size()==0) {
-				System.out.println("All predators have died in "
-									+ time + " days");
-				break;
+				String text = "All predators have died in "
+						+ time + " days";
+				System.out.println(text);
+				
+
+				JOptionPane.showMessageDialog(frame, text);
+				System.exit(0);
 			}
 		}	
 	}
