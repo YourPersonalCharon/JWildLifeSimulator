@@ -12,12 +12,20 @@ public class Program{
 		
 		World world = new World(C.WIDTH, C.HEIGHT, animals);
 		
+		System.out.println(world.draw());
+		
 		MyPanel panel = new MyPanel(world);
 		MyFrame frame = new MyFrame(panel);
 		
-		world.draw();
 		
-		for(int time = 0;time<C.MAX_TIME;time++) {
+		for(int time = 1;time<C.MAX_TIME;time++) {
+			
+			try {
+				Thread.sleep(C.TICKRATE);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			H.lifeCycle(world);
 			frame.panel.repaint();
@@ -25,12 +33,6 @@ public class Program{
 				System.out.println("All predators have died in "
 									+ time + " days");
 				break;
-			}
-			try {
-				Thread.sleep(C.TICKRATE);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		}	
 	}
