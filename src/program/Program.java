@@ -1,20 +1,32 @@
 package program;
+
+
 import types.*;
+
 
 
 public class Program {
 	public static void main(String[] args) {
-		Map map = new Map(C.WIDTH, C.HEIGHT);
+		World world = new World(C.WIDTH, C.HEIGHT);
 		
 		Population animals = new Population();
 		
-		map.draw(animals);
+		world.draw(animals);
 		
-		H.lifeCycle();
-		
-		
-		
-		System.out.println("Done");
+		for(int time = 0;time<100;time++) {
+			H.lifeCycle(world, animals);
+			if(animals.predators.size()==0) {
+				System.out.println("All predators have died in "
+									+ time + " days");
+				break;
+			}
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 		
 		
