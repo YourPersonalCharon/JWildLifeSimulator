@@ -1,6 +1,9 @@
 package types;
 
 import java.util.List;
+
+import program.C;
+
 import java.util.ArrayList;
 
 public class Tile {
@@ -15,6 +18,10 @@ public class Tile {
 	}
 	public int getPraysNumber() {
 		return prays.size();
+	}
+	
+	public boolean isOverpopulated() {
+		return prays.size()>C.OVERPOPULATION_THRESHOLD;
 	}
 	
 	public String getTile() {

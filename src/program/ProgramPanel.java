@@ -1,16 +1,15 @@
-package types;
+package program;
 
 import java.awt.*;
 import javax.swing.*;
+import types.*;
 
-import program.C;
-
-public class WorldPanel extends JPanel{
+public class ProgramPanel extends JPanel{
 
 	
 	public World world;
 
-	public WorldPanel(World map){
+	public ProgramPanel(World map){
 		this.world = map;
 		this.setPreferredSize(new Dimension(C.CANVAS_WIDTH, C.CANVAS_HEIGHT));
 		this.setBackground(Color.white);
@@ -20,12 +19,28 @@ public class WorldPanel extends JPanel{
 		super.paint(g);
 		for(int y = 0; y < C.HEIGHT; y++) {
 			for(int x = 0; x < C.WIDTH; x++) {
-				if(world.map[y][x].predators.size() > world.map[y][x].prays.size()) {
-					g.setColor(Color.red);
-				} else if(world.map[y][x].predators.size() == world.map[y][x].prays.size()) {
-					g.setColor(Color.yellow);
+				
+				Tile tile = world.map[y][x];
+				
+				int predatorsNumber = tile.predators.size();
+				int praysNumber = tile.prays.size();
+				
+				if(tile.isOverpopulated()) {
+					
+					g.setColor(C.OVERPOPULATED_TILE);
+					
+				}else if(predatorsNumber > praysNumber) {
+					
+					g.setColor(C.HUNGRY_TILE);
+					
+				} else if(predatorsNumber == praysNumber) {
+					
+					g.setColor(C.NEUTRAL);
+					
 				} else {
-					g.setColor(Color.green);
+					
+					g.setColor(C.OK_TILE);
+					
 				}
 				
 				g.fillRect(x * C.TILE_SIZE, y * C.TILE_SIZE,

@@ -2,6 +2,8 @@ package types;
 
 import javax.swing.*;
 
+import program.ProgramPanel;
+
 public class MyFrame extends JFrame{
 	
 	/**
@@ -9,9 +11,9 @@ public class MyFrame extends JFrame{
 	 */
 	private static final long serialVersionUID = 8515733548072536480L;
 	
-	public WorldPanel worldPanel;
+	public ProgramPanel worldPanel;
 	
-	public MyFrame(WorldPanel panel){
+	public MyFrame(ProgramPanel panel){
 		
 		this.worldPanel = panel;
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

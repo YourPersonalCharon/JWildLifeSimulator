@@ -16,7 +16,7 @@ public class Program{
 		
 		System.out.println(world.draw());
 		
-		WorldPanel panel = new WorldPanel(world);
+		ProgramPanel panel = new ProgramPanel(world);
 		MyFrame frame = new MyFrame(panel);
 		
 		
